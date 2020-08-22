@@ -1,0 +1,8 @@
+.navigation {
+  display: flex;
+  list-style: none;
+}
+
+.navigationItem:not(:last-child) {
+  margin-right: 15px;
+}
