@@ -1,5 +1,7 @@
 import queryString from 'query-string';
 
-export default function getQueryParams(string) {
+const getQueryParams = string => {
   return queryString.parse(string);
-}
+};
+
+export default getQueryParams;

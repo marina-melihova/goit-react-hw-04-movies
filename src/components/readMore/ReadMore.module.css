@@ -1,0 +1,5 @@
+.btn {
+  composes: btn from global;
+  color: mediumblue;
+  font-size: 16px;
+}

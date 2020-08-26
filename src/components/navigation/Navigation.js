@@ -4,28 +4,21 @@ import routes from '../../routes';
 import styles from './Navigation.module.css';
 
 const Navigation = () => {
+  const navs = routes.filter(route => route.label !== 'MovieDetails');
   return (
-    <ul className={styles.navigation}>
-      <li className={styles.navigationItem}>
-        <NavLink
-          className="navLink"
-          activeClassName="navLinkActive"
-          to={routes.home}
-          exact
-        >
-          Home
-        </NavLink>
-      </li>
-      <li>
-        <NavLink
-          className="navLink"
-          activeClassName="navLinkActive"
-          to={routes.movies}
-          exact
-        >
-          Movies
-        </NavLink>
-      </li>
+    <ul className={`container ${styles.navigation}`}>
+      {navs.map(route => (
+        <li key={route.label} className={styles.navigationItem}>
+          <NavLink
+            className={styles.navLink}
+            activeClassName={styles.navLinkActive}
+            to={route.path}
+            exact
+          >
+            {route.label}
+          </NavLink>
+        </li>
+      ))}
     </ul>
   );
 };

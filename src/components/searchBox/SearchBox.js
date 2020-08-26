@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
+import styles from './SearchBox.module.css';
 
-export default class Searchbox extends Component {
+class SearchBox extends Component {
   state = { value: '' };
 
   handleChange = e => {
@@ -11,7 +12,6 @@ export default class Searchbox extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-
     this.props.onSubmit(this.state.value);
     this.setState({ value: '' });
   };
@@ -20,12 +20,17 @@ export default class Searchbox extends Component {
     return (
       <form onSubmit={this.handleSubmit}>
         <input
+          className={styles.inputQuery}
           type="text"
           value={this.state.value}
           onChange={this.handleChange}
         />
-        <button type="submit">Search</button>
+        <button className="btn" type="submit">
+          Search
+        </button>
       </form>
     );
   }
 }
+
+export default SearchBox;

@@ -1,5 +1,12 @@
-.container {
+:global(.container) {
   margin: 0 auto;
-  padding: 0 30px;
+  padding-left: 30px;
+  padding-right: 30px;
   max-width: 1170px;
+}
+
+.main {
+  /* composes: container from '../index.css'; */
+  padding-top: 30px;
+  padding-bottom: 30px;
 }

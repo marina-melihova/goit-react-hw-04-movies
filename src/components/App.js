@@ -1,23 +1,22 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import HomePage from '../pages/HomePage';
-import routes from '../routes';
-import MoviesPage from '../pages/MoviesPage';
-import MovieDetailsPage from '../pages/MovieDetailsPage';
 import Header from './header/Header';
+import routes from '../routes';
 import styles from './App.module.css';
 
 const App = () => {
   return (
     <BrowserRouter>
-      <div className={styles.container}>
-        <Header />
-        <Switch>
-          <Route path={routes.home} exact component={HomePage} />
-          <Route path={routes.movies} exact component={MoviesPage} />
-          <Route path={routes.movieDetails} component={MovieDetailsPage} />
-        </Switch>
-      </div>
+      <Header />
+      <main className={`container ${styles.main}`}>
+        <Suspense fallback={<h1>Loading...</h1>}>
+          <Switch>
+            {routes.map(route => (
+              <Route key={route.label} {...route} />
+            ))}
+          </Switch>
+        </Suspense>
+      </main>
     </BrowserRouter>
   );
 };
